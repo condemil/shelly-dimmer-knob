@@ -4,11 +4,12 @@ Shelly Dimmer wall switch with rotary knob and Home Assistant intergration
 
 ## How to use it
 
-Check the [instructables](https://www.instructables.com/id/Shelly-Dimmer-Wall-Switch-With-Rotary-Knob-And-Home-Assistant-Intergration/)
+Check the [instructables](https://www.instructables.com/id/Shelly-Dimmer-Wall-Switch-With-Rotary-Knob-and-Hom/)
 
 ## TODO
 
 - [ ] Add calibration support
+- [ ] Add power consumption
 
 ## Disclaimer
 
