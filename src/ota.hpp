@@ -33,7 +33,7 @@ void setup() {
         else if (error == OTA_RECEIVE_ERROR)
             logger::debugln(F("receive failed"));
         else if (error == OTA_END_ERROR)
-            logger::debugln(F("rnd failed"));
+            logger::debugln(F("end failed"));
     });
 
     ArduinoOTA.begin();
