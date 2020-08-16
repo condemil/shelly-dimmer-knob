@@ -54,8 +54,8 @@ void receivePacket() {
         }
 
         if (rx_idx == (3 + rx_payload_size + 2)) { // checksum
-            uint16_t c = (rx_buffer[rx_idx-1] << 8) + b;
-            if (c != crc(rx_buffer, rx_idx-1)) {
+            uint16_t c = (rx_buffer[rx_idx - 1] << 8) + b;
+            if (c != crc(rx_buffer, rx_idx - 1)) {
                 logger::debugln(F("dimmer: received wrong checksum"));
                 rx_idx = 0;
                 continue;
@@ -70,7 +70,7 @@ void receivePacket() {
 
         if (rx_idx == (3 + rx_payload_size + 3)) { // end marker
             logger::debugln(F("dimmer: received package"));
-            helpers::printHex(rx_buffer, rx_idx+1);
+            helpers::printHex(rx_buffer, rx_idx + 1);
             rx_idx = 0;
             continue;
         }
@@ -113,7 +113,8 @@ void sendVersion() {
 
 void sendBrightness(uint8_t b) {
     logger::debugf("dimmer: set brightness: %d\n", b);
-    uint8_t payload[] = { (uint8_t)(b * 10), (uint8_t)((b * 10) >> 8) }; // b*10 second byte, b*10 first byte (little endian)
+    uint8_t payload[] = {
+        (uint8_t)(b * 10), (uint8_t)((b * 10) >> 8)}; // b*10 second byte, b*10 first byte (little endian)
     sendCommand(CMD_CHANGE_BRIGHTNESS, payload, sizeof(payload));
 }
 

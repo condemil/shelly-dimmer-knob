@@ -20,7 +20,7 @@ WiFiManagerParameter _custom_ota_token("ota_token", "OTA Token", "", 40);
 helpers::elapsedMillis _reconnect_time_elapsed;
 const unsigned int RECONNECT_DELAY = 5000;
 
-void _saveConfigCallback () {
+void _saveConfigCallback() {
     logger::debugln(F("wifi: connection established, set network mode to provisioned"));
     config::conf.provisioned = true;
     strcpy(config::conf.mqtt_host, _custom_mqtt_host.getValue());
@@ -68,7 +68,8 @@ void setup() {
 }
 
 void handle() {
-    if (WiFi.status() == WL_CONNECTED) return;
+    if (WiFi.status() == WL_CONNECTED)
+        return;
 
     if (_reconnect_time_elapsed >= RECONNECT_DELAY) {
         _reconnect_time_elapsed = 0; // reset timer

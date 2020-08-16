@@ -53,7 +53,7 @@ void _callback(char *topic, byte *payload, unsigned int length) {
         return;
     }
 
-    if (doc["command"].is<char*>()) {
+    if (doc["command"].is<char *>()) {
         if (doc["command"] == "reset") {
             _onCommand(COMMAND_RESET);
         } else if (doc["command"] == "restart") {
@@ -65,7 +65,7 @@ void _callback(char *topic, byte *payload, unsigned int length) {
         _onBrightness(doc["brightness"]);
     }
 
-    if (doc["state"].is<char*>()) {
+    if (doc["state"].is<char *>()) {
         if (doc["state"] == "ON") {
             _onPower(true);
         } else if (doc["state"] == "OFF") {
@@ -83,11 +83,13 @@ void _reconnect() {
         _onSubscribed();
         logger::debugf("mqtt: subscribed to %s\n", MQTT_TOPIC_COMMAND);
     } else {
-        logger::debugf("mqtt: connect failed, rc=%d try again in %u seconds\n", _client.state(), RECONNECT_DELAY / 1000);
+        logger::debugf(
+            "mqtt: connect failed, rc=%d try again in %u seconds\n", _client.state(), RECONNECT_DELAY / 1000);
     }
 }
 
-void setup(std::function<void()> onSubscribed, std::function<void(uint8_t)> onCommand, std::function<void(uint8_t)> onBrightness, std::function<void(bool)> onPower) {
+void setup(std::function<void()> onSubscribed, std::function<void(uint8_t)> onCommand,
+    std::function<void(uint8_t)> onBrightness, std::function<void(bool)> onPower) {
     _onSubscribed = onSubscribed;
     _onCommand = onCommand;
     _onBrightness = onBrightness;
@@ -109,4 +111,4 @@ void handle() {
         _reconnect();
     }
 }
-}
+} // namespace mqtt

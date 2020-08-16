@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include <math.h>
 #include <SoftwareSerial.h>
+#include <math.h>
 
 #include "button.hpp"
 #include "config.hpp"
@@ -65,13 +65,13 @@ void onSubscribed() {
 
 void onCommand(uint8_t command) {
     switch (command) {
-        case mqtt::COMMAND_RESET:
-            config::truncate();
-            ESP.restart();
-            break;
-        case mqtt::COMMAND_RESTART:
-            ESP.restart();
-            break;
+    case mqtt::COMMAND_RESET:
+        config::truncate();
+        ESP.restart();
+        break;
+    case mqtt::COMMAND_RESTART:
+        ESP.restart();
+        break;
     }
 }
 
@@ -100,7 +100,8 @@ void updateValues() {
 }
 
 void onBrightness(uint8_t brightness) {
-    if (brightness == current_brightness) return;
+    if (brightness == current_brightness)
+        return;
 
     current_brightness = brightness;
 
@@ -118,7 +119,8 @@ void onPowerClick() {
 }
 
 void onPower(bool power) {
-    if (power == current_power) return;
+    if (power == current_power)
+        return;
 
     current_power = power;
 

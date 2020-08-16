@@ -53,7 +53,7 @@ void debugf(const char *format, ...) {
     va_list arg;
     va_start(arg, format);
     char temp[64];
-    char* buffer = temp;
+    char *buffer = temp;
     size_t len = vsnprintf(temp, sizeof(temp), format, arg);
     va_end(arg);
     if (len > sizeof(temp) - 1) {
@@ -66,7 +66,7 @@ void debugf(const char *format, ...) {
         vsnprintf(buffer, len + 1, format, arg);
         va_end(arg);
     }
-    len = _out.write((const uint8_t*) buffer, len);
+    len = _out.write((const uint8_t *)buffer, len);
     if (_syslog_active) {
         _syslog.log(LOG_DEBUG, buffer);
     }
@@ -74,4 +74,4 @@ void debugf(const char *format, ...) {
         delete[] buffer;
     }
 }
-}
+} // namespace logger

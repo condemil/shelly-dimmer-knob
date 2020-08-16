@@ -1,5 +1,7 @@
-UseTab: Never
-IndentWidth: 4
-BreakBeforeBraces: Attach
 AlignAfterOpenBracket: DontAlign
+AlignTrailingComments: false
+AllowShortFunctionsOnASingleLine: Empty
+BreakBeforeBraces: Attach
 ColumnLimit: 120
+IndentWidth: 4
+UseTab: Never
